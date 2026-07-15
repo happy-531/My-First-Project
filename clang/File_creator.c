@@ -15,9 +15,11 @@ char f[100];
 char create[100];
 char show[100];
 
+printf("File creator is a program written in c language that creates a folder and then open it then ask you to create, delete and See items in a folder or directory.");
+
 system("cd && ls");
 
-printf("Enter the name of the folder. :\n ");
+printf("Enter the name of the folder you want to create: ");
 scanf(" %s",name);
 
 sprintf(command,"mkdir %s",name);
@@ -46,11 +48,11 @@ scanf(" %d",&choice);
 fflush(stdout);
 
 if (choice == 1){
-printf("choose the directory\n");
+printf("choose the directory");
 fflush(stdout);
 
 system("cd && ls");
-printf("Enter the exact name of the directory :\n");
+printf("Enter the exact name of the directory : ");
 scanf(" %s",d);
 fflush(stdout);
 
@@ -58,7 +60,7 @@ sprintf(rm,"cd ~/%s && ls",d);
 
 system(rm);
 
-printf("Enter the exact name of file to delete :\n");
+printf("Enter the exact name of file to delete : ");
 scanf(" %s",f);
 fflush(stdout);
 
@@ -67,15 +69,15 @@ system(r);
 printf("deleted successfully\n");
 } else if(choice==2){
 
-printf("choose the directory\n");
+printf("choose the directory");
 fflush(stdout);
 
 system("ls");
-printf("Enter the exact name of the directory :\n");
+printf("Enter the exact name of the directory : ");
 scanf(" %s",d);
 fflush(stdout);
 
-printf("Enter the name of file :\n");
+printf("Enter the name of file : ");
 scanf(" %s",cf);
 fflush(stdout);
 
@@ -88,7 +90,7 @@ system(show);
 sleep(4);
 } else if (choice==3){
 system("cd && ls");
-printf("if you want to see the file enter the name of folder or directory to see files inside it :\n");
+printf("if you want to see the file enter the name of folder or directory to see files inside it : ");
 scanf(" %s",d);
 fflush(stdout);
 

@@ -4,7 +4,9 @@
 int main(){
 	char file1[100] , txt[1000] , cat[100] ;
 
-	printf("Enter the file name with extension : \n");
+	printf("Writer is a program written in c language that can be used to create and write in a file.")
+
+	printf("Enter the file name with extension : ");
 	scanf(" %s",file1);
 
 	FILE *fptr;
