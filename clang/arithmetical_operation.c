@@ -5,10 +5,10 @@ int a;
 int b;
 int c;
 
-printf("Enter first number :\n");
+printf("Enter first number : ");
 scanf("%d", &a );
 
-printf("Enter second number :\n");
+printf("Enter second number : ");
 scanf("%d",&b);
 
 printf("Select what you want :\n \n 1.Addition \n 2.Subtraction \n 3.Multiplication \n 4.division :\n =>");

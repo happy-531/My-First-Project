@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Weather</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+        }
+        .ui{
+            margin: 5px ;
+            padding: 10px;
+            justify-self: center;
+            border-radius: 8px;
+        }
+        h1,h2,p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>    
+    
+    <h1>Weather</h1>
+    <div class="ui">
+    <label for="city_name" class="ui">city: </label>
+    <input type="text" placeholder="Enter the city name" id="city_name" class="ui" required/>
+    <button id="btn" onclick="weather()" class="ui" type="button">Search</button>
+    </div>
+    <h2 id="output"></h2>
+    <p id="info"></p>
+
+<script>
+function weather(){
+ let input=document.getElementById('city_name');
+ let btn =document.getElementById('btn');
+ 
+ let api="44f67f27f1a041af39965c3cb8e04c21"
+ let city=input.value;
+ city = city.trim();
+ 
+ let output=document.getElementById('output');
+ let info=document.getElementById('info')
+ let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`
+        
+    if (city){
+         output.innerText=("Searching...")
+         btn.disabled=true;
+         btn.innerText="Searching..."
+         input.disabled=true;
+         info.innerText=("")
+         fetch(url)
+         .then(response => response.json())
+         .then(data => {
+          console.log(data)
+          if (data.cod===200){
+             const description=data.weather[0].description;
+             const wind=data.wind.speed;
+             const temp = data.main.temp;
+             const humidity=data.main.humidity;
+             const h2=`weather in ${city}:<br>`
+             const information=`Weather: ${description}<br>Temperature: ${temp} degrees celsius.<br>Humidity: ${humidity}% <br>Wind speed: ${wind} m/s`;
+             output.innerHTML=h2;
+             info.innerHTML=information;
+          }else{
+             output.innerHTML=data.message;
+          }
+          
+          btn.disabled=false;
+          input.disabled=false;
+          btn.innerHTML="Search"
+        })
+        .catch(error => {  
+            console.log(error)
+            btn.disabled=false;
+            input.disabled=false;
+            btn.innerHTML="Search"
+         });
+    }
+    else{
+         alert("please enter valid city!");
+        }
+}
+const input=document.getElementById('city_name');
+const btn=document.getElementById('btn');
+
+input.addEventListener("keydown",function(event){
+    if (event.key === "Enter"){
+    weather();
+    }
+});
+
+navigator.geolocation.getCurrentPosition(function(position){
+    const lat=position.coords.latitude;
+    const lon=position.coords.longitude;
+    
+    console.log(lat,lon);
+    let url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api}&units=metric`
+    fetch(url).then(response => response.json()).then(data => {
+    console.log(data)
+          if (data.cod===200){
+             const description=data.weather[0].description;
+             const wind=data.wind.speed;
+             const temp = data.main.temp;
+             const humidity=data.main.humidity;
+             const h2=`weather in ${data.name} is:<br>`
+             const information=`Weather: ${description}<br>Temperature: ${temp} degrees celsius.<br>Humidity: ${humidity}% <br>Wind speed: ${wind} m/s`;
+             document.write(h2,information);
+          }else{
+              document.write(data.message);
+          }
+         }).catch(error =>{
+             document.write(error);
+         });
+})
+</script>
+</body>
+</html>

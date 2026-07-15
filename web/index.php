@@ -1,12 +1,14 @@
 <?php
- if (isset($_POST['loginbtn'])){
-      $user=$_POST['username'];
+        if ($_SERVER['REQUEST_METHOD']=="POST"){
+       $user=$_POST['username'];
       $pass=$_POST['password'];
 
-      if ($user=="Happy" && $pass=="happybhai7890"){
-        header("Location: dashboard.php");
-        exit();
-      }}
+      if ($user==="Happy" && $pass==="happybhai7890"){
+           echo "<h2 style='color:green;'>ACCESS GRANTED</h2><br>";
+      }else{
+      echo "<h2 style='color:red;'>ACCESS DENIED</h2><br>";
+}
+}
 ?>
 <html>
    <head>
@@ -75,11 +77,12 @@ justify-self:center;
  var user=document.getElementById('username').value;
  var pass=document.getElementById('password').value;
 
- if (user.includes(" ")||pass.length <=8){
-     alert('please enter a vaild password')
+ if (user.includes(" ")||pass.includes(" ")){
+     alert('please enter a vaild password');
      return false
- }else{
-     alert('request sent succesfully')
+ }
+if(user=="Happy" && pass=="happybhai7890"){
+	window.open("/dashboard.php");
      return true
  }
 }
@@ -97,14 +100,5 @@ justify-self:center;
                <input type="submit" name="loginbtn" id="loginbtn" value="login"/>
            </form>
        </div>
-       <?php
-	if (isset($_POST['loginbtn'])){
-       $user=$_POST['username'];
-      $pass=$_POST['password'];
-
-      if ($user!="Happy" && $pass!="happybhai7890"){
-      echo "<h2 style='color:red;'>ACCESS DENIED</h1><br>";
-}}
-       ?>
    </body>
 </html>
