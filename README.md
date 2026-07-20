@@ -88,7 +88,7 @@ This repository showcases my learning journey by collecting the projects I built
 Clone the repository:
 
 ```bash
-git clone https://github.com/babuhappy531-lab/My-First-Project.git
+git clone https://github.com/happy-531/My-First-Project.git
 ```
 
 Open the project folder:
