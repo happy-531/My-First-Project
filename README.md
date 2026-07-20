@@ -17,6 +17,7 @@ A collection of beginner programming projects built while learning different pro
 - ⚙️ OS Tasks
 - 🔗 Password Protected Link
 - 📊 Average Calculator
+- 🌐 Dns Lookup
 
 ### ⚙️ C
 - ➕ Arithmetic Operations
